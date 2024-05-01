@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'ind4.css' %}">
+</head>
+<body>
+    <form action="{% url 'editschool' id=data.id %}" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <div class="a">
+                <h2>School Register Form</h2>
+                <hr class="n">
+
+                <label for="schlname"><b>School Name</b></label>
+                <input type="text" placeholder="Enter School Name" name="sname" value="{{data.schlname}}" required><br>
+
+                <label for="district"><b>District</b></label>
+                <input type="text" placeholder="Enter District" value="{{data.district}}" name="Dict" required><br>
+
+                <label for="address"><b> Address</b></label>
+                <br>
+                <textarea id="Address" name="adrs" rows="4"    cols="50">{{data.address}}</textarea>  <br>
+                
+                <label for="phone_number"><b>Phone Number</b></label>
+                <input type="text" id="phone_number" name="phn_no" value="{{data.phoneno}}"  pattern="[0-9]{10}" title="Phone Number" placeholder="0123456789" required><br>
+
+
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" value="{{data.email}}" name="email" id="email" required><br>
+                 
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password"  value="{{data.password}}" name="psw" required><br>
+                <button type="submit"><h3>Login</h3></button>
+            </div>
+    </div>
+    </form>
+    
+</body>
+</html>

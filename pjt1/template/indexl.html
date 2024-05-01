@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'rgr' %}" method="post">
+        {% csrf_token %}
+        <input type="search" name="schoolname" required>
+        <button>Search</button>
+    </form>
+    <table>
+        <tr>
+            <th>School Name</th>
+            <th>District</th>
+            <th>Address</th>
+            <th>phone Number</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th></th>
+        </tr>
+        {% for i in abc %}
+        <tr>
+            <td>{{i.schlname}}</td>
+            <td>{{i.district}}</td>
+            <td>{{i.address}}</td>
+            <td>{{i.phoneno}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.password}}</td>
+            <td>{{i.id}}</td>
+            <td><a href="{% url 'deleteschool' id=i.id %}">delete</a>
+            <a href="{% url 'editschool' id=i.id %}">edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
